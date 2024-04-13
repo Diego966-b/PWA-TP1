@@ -1,8 +1,10 @@
 import logo from './../../logo.svg';
+import style from './Home.module.css';
+
 
 const Home = () => {
     return (
-        <div>
+        <div className={style.home}>
             <img src={logo} className="App-logo" alt="logo" />
             <p>
               Edit <code>src/App.js</code> and save to reload. GHDAWdwe
