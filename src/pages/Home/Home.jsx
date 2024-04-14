@@ -9,21 +9,21 @@ const tarea = {
     key: 0,
     nombre: "nombre1",
     descripcion: "descripcion1",
-    estado: "estado1"
+    estado: "estado1",
   };
   
   const tarea2 = {
     key: 1,
     nombre: "nombre2",
     descripcion: "descripcion2",
-    estado: "estado2"
+    estado: "estado2",
   };
   
   const tarea3 = {
     key: 2,
     nombre: "nombre3",
     descripcion: "descripcion3",
-    estado: "estado3"
+    estado: "estado3",
   };
   
   const tareas = [tarea, tarea2, tarea3];
@@ -64,26 +64,10 @@ const Home = () => {
     };
     
     const eliminarTarea = (keyBuscada) => {
-      const borrarTarea = listaTareasState.map((tarea) => {
-          if (tarea.key === keyBuscada) {
-              //console.log(listaTareasState);
-              listaTareasState.splice(keyBuscada, 1);
-          }
-          return tarea;
-      });
-        if (listaTareasState.length == 1)
-        {
-            const arr = [];
-            setListaTareasState(arr);
-            console.log("tens 1 elemento");
-        }
-        else
-        {
-            setListaTareasState(borrarTarea);
-        }
+        const nuevasTareas = listaTareasState.filter((tarea) => tarea.key !== keyBuscada);
+        setListaTareasState(nuevasTareas);
     };
-      
-
+    
     return (
         <div>
             {listaTareasState.length == 0 ? (
