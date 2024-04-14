@@ -1,6 +1,27 @@
 /*css de la home page... */
 
 #home {
-    margin: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+
 }
 
+.itemLista{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.caja{
+    background-color: #545151;
+    border: 1px #726f5b;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.nomTarea{
+    margin: 20px;
+}
