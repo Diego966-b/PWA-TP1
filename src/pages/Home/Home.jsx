@@ -1,5 +1,3 @@
-import logo from './../../logo.svg';
-import style from './Home.module.css';
 import Titulo from '../../components/Titulo/Titulo.jsx';
 import Input from '../../components/Input/Input.jsx';
 import Button from '../../components/Button/Button.jsx';
@@ -62,27 +60,24 @@ const Home = () => {
         });
         setListaTareasState(nuevasTareas);
     };
-    
+
+    /*
     const eliminarTarea = (keyBuscada) => {
-      const borrarTarea = listaTareasState.map((tarea) => {
-          if (tarea.key === keyBuscada) {
-              //console.log(listaTareasState);
-              listaTareasState.splice(keyBuscada, 1);
-          }
-          return tarea;
-      });
-        if (listaTareasState.length == 1)
-        {
-            const arr = [];
-            setListaTareasState(arr);
-            console.log("tens 1 elemento");
-        }
-        else
-        {
-            setListaTareasState(borrarTarea);
-        }
+        let lista;
+        let nuevalista;
+        lista = listaTareasState;
+        console.log(lista[keyBuscada]);
+        nuevalista = lista.filter((elemento, index) => index !== keyBuscada);
+        console.log(nuevalista);
+        setListaTareasState(nuevalista);
     };
-      
+      */
+
+    const eliminarTarea = (keyBuscada) => {
+        const nuevaLista = listaTareasState.filter(tarea => tarea.key !== keyBuscada);
+        setListaTareasState(nuevaLista);
+    };
+
 
     return (
         <div>
@@ -90,7 +85,7 @@ const Home = () => {
                 <p>Terminaste tus tareas!</p>
             ) : (
                 <div>
-                    <p>No termianste tus tareas</p>
+                    <p>No terminaste tus tareas</p>
                     <Titulo texto="Lista de tareas"></Titulo>
                     {listaTareasState.map((tarea) => {
                         return (
