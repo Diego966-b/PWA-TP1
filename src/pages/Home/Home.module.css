@@ -1,8 +1,22 @@
-#home {
-    margin-left: 20px;
-    margin-right: 20px;
-
+.Home {
+    width: 100%;
+    background: linear-gradient(45deg, black, grey, darkblue);
+    display: flex;
+    background-size: 400% 400%;
+    animation: cambiar 20s ease-in-out infinite;
 }
+
+@keyframes cambiar{
+    0%{background-position: 0 50%;}
+    50%{background-position: 100% 50%;}
+    100%{background-position: 0 50%;}
+}
+
+.box {
+    flex: 1; /* Hace que las columnas ocupen un tercio del espacio disponible */
+    padding: 20px; /* Agrega espacio alrededor de cada columna */
+}
+
 
 .itemLista{
     list-style-type: none;
@@ -27,4 +41,16 @@
 .busqueda{
     background-color: white;
     width: 30%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.busqueda:focus {
+    border-color: black; /* Cambia el color del borde cuando el input está seleccionado */
+    outline: none; /* Quita el resplandor alrededor del input cuando está seleccionado (si lo deseas) */
+}
+
+.crear {
+    text-align: left;
 }

@@ -1,9 +1,10 @@
-import logo from './../../logo.svg';
 import style from './Home.module.css';
 import Titulo from '../../components/Titulo/Titulo.jsx';
 import Input from '../../components/Input/Input.jsx';
 import Button from '../../components/Button/Button.jsx';
 import TextField from '@mui/material/TextField';
+import { Card } from 'antd';
+import { Empty } from 'antd';
 import { useState } from 'react';
 
 const tarea = {
@@ -85,76 +86,109 @@ const Home = () => {
         setListaTareas(nuevasTareas);
     };
 
-
     function Listar (props)  {
         console.log("HOME");
         //create a new array by filtering the original array
-        //console.log(props.input);
+        //console.log(props.Input);
         const listaTareasFiltrada = props.data.filter((el) => {
-            //if no input the return the original
+            //if no Input the return the original
             //console.log(el);
             if (props.input === '') {
                 console.log(el);
                 return el;
             }
-            //return the item which contains the user input
+            //return the item which contains the user Input
             else {
                 return el.nombre.toLowerCase().includes(props.input)
             }
         })
         return (
+            /*
             <ul>
                 {listaTareasFiltrada.map((tarea) => (
                     <div className={style.caja} key={tarea.key}>
                         <li className={style.itemLista}><h2 className={style.nomTarea}>Nombre: {tarea.nombre}</h2></li>
                         <li className={style.itemLista}>Descripcion: {tarea.descripcion}</li>
                         <li className={style.itemLista}>Estado: {tarea.estado}</li>
-                        <li className={style.itemLista}>key: {tarea.key}</li> 
                         {tarea.estado == "Completada" ? (cantTareasCompletadas ++): ""}
                         <Button text="Completada" onClick={() => completarTarea(tarea.key)}></Button>
                         <Button text="Eliminar" onClick={() => eliminarTarea(tarea.key)}></Button>
                     </div>
                 ))}
             </ul>
+            */
+            <div>
+                {listaTareasFiltrada.map((tarea) => (
+                    <Card
+                        title={tarea.nombre} // Usa el nombre de la tarea como título de la tarjeta
+                        bordered={false}
+                        style={{
+                            marginBottom: 20, // Espacio entre tarjetas
+                            marginTop: 20,
+                            fontSize: 20
+                        }}
+                        key={tarea.key}
+                    >
+                        <p>Descripción: {tarea.descripcion}</p>
+                        <p>Estado: {tarea.estado}</p>
+                        {tarea.estado == "Completada" ? (cantTareasCompletadas ++): ""}
+                        <Button text="Completada" onClick={() => completarTarea(tarea.key)}></Button>
+                        <Button text="Eliminar"  onClick={() => eliminarTarea(tarea.key)}></Button>
+                    </Card>
+                ))}
+            </div>
         )
     }
 
     return (
-        <div>
-            {listaTareas.length == 0 ? (
-                /* 
-                    Si no hay tareas para mostrar, dar un mensaje al usuario de que ya completó todas sus
-                    tareas y que está listo para descansar
-                */
-                <div>
-                    <p>Ya completaste todas tus tareas, estas listo para descansar</p>
-                </div>
-                ) : (
-                <div>
+            <div className={style.Home}>
+                <div className={style.box}>
                     <Titulo texto="Lista de tareas"></Titulo>
-                    <Titulo texto="Busqueda"></Titulo>
-                    <div>
-                        <TextField className={style.busqueda}
-                            id="outlined-basic"
-                            variant="outlined"
-                            fullWidth
-                            label="Buscar"
-                            onChange={onChangeHandlerBusqueda} 
-                        />
-                        <Listar input={valueBusqueda} data={listaTareas}></Listar>
-                        {/* Debe haber un contador que muestre el número total de tareas y el número de tareas completadas. */}   
-                        <p>{cantTareasCompletadas} tareas completadas</p>
-                        <p>{listaTareas.length} tareas en total</p>
+                    <p>
+                        Bienvenido a tu lista de tareas! <br/>
+                        Aqui podras crear tareas y marcarlas como completadas o eliminarlas. <br/> <br/>
+                        Este es tu progreso:
+                    </p>
+                    <p>{cantTareasCompletadas} tareas completadas</p>
+                    <p>{listaTareas.length} tareas en total</p>
+                </div>
+                {listaTareas.length == 0 ? (
+                    /*
+                        Si no hay tareas para mostrar, dar un mensaje al usuario de que ya completó todas sus
+                        tareas y que está listo para descansar
+                    */
+                    <div className={style.box}>
+                        <Empty />
+                        <p>Ya completaste todas tus tareas, estas listo para descansar.</p>
                     </div>
-                </div>  
-            )}
-                <Titulo texto="Crear nueva tarea"></Titulo>
-                <p>Nombre:</p>
-                <Input value={valueNombre} onChangeHandler={onChangeHandlerNombre}/>
-                <p>Descripcion:</p>
-                <Input value={valueDescrip} onChangeHandler={onChangeHandlerDescripcion}/>
-                <Button text="Enviar" onClick={crearNuevaTarea}></Button> 
-        </div>
+                ) : (
+                    <div className={style.box}>
+                        <Titulo texto="Busqueda"></Titulo>
+                        <div>
+                            <TextField className={style.busqueda}
+                                id="outlined-basic"
+                                variant="outlined"
+                                fullWidth
+                                label="Buscar"
+                                onChange={onChangeHandlerBusqueda}
+                            />
+                            <Listar input={valueBusqueda} data={listaTareas}></Listar>
+                            {/* Debe haber un contador que muestre el número total de tareas y el número de tareas completadas. */}
+
+                        </div>
+                    </div>
+                )}
+                <div className={style.box}>
+                    <Titulo texto="Crear nueva tarea"></Titulo>
+                    <div className={style.crear}>
+                        <p>Nombre:</p>
+                        <Input value={valueNombre} onChangeHandler={onChangeHandlerNombre}/>
+                        <p>Descripcion:</p>
+                        <Input value={valueDescrip} onChangeHandler={onChangeHandlerDescripcion}/>
+                        <Button text="Enviar" onClick={crearNuevaTarea}></Button>
+                    </div>
+                </div>
+            </div>
     );
 }
 export default Home;
