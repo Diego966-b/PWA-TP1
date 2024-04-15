@@ -18,7 +18,7 @@ desarrollo web, en la facultad nacional del comahue (UNCO).
 ## Miembros del Grupo
 
 - Fausto Ignacio Biló - FAI 3616.
-- Diego Benjamin - Legajo.
+- Diego Benjamin - FAI 3002.
 
 
 ## Instalación
@@ -45,6 +45,6 @@ desarrollo web, en la facultad nacional del comahue (UNCO).
 ## Contacto
 
 faustobilo47@gmail.com
-
+diego.benjamin@est.fi.uncoma.edu.ar
 
 
