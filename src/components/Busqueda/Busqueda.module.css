@@ -1,0 +1,12 @@
+.busqueda{
+    background-color: white;
+    width: 30%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.busqueda:focus {
+    border-color: black; /* Cambia el color del borde cuando el input está seleccionado */
+    outline: none; /* Quita el resplandor alrededor del input cuando está seleccionado (si lo deseas) */
+}

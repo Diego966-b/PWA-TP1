@@ -1,6 +1,6 @@
 # Proyecto To do list
 
-![Logo de la App](./src/head3.png)
+![Logo de la App](./src/assets/logo.png)
 
 Es una aplicacion desarrollada en React donde fue diseañado una 
 lista de tareas, con la siguientes funcionalidades:
@@ -15,11 +15,19 @@ Fue diseñado como Trabajo practico numero 1 de la materia
 "Programacion Web Avanzada" de la carrera universitaria en 
 desarrollo web, en la facultad nacional del comahue (UNCO).
 
-## Miembros del Grupo
+## Archivo index.js
 
-- Fausto Ignacio Biló - FAI 3616.
-- Diego Benjamin - FAI 3002.
+Este será el fichero JS de entrada a nuestra aplicación React. Será el único en el que carguemos ReactDOM y se encarga de acceder a un nodo del DOM (el div que antes identificamos como root) e importar y pintar el componente principal de la aplicación, en este caso, llamado App.
 
+## Archivo app.js
+
+Este es el componente principal de tu aplicación React. Aquí es donde definirás la estructura principal de tu interfaz de usuario. Puedes organizar tu aplicación en otros componentes de React y colocarlos dentro de App.js. Este archivo puede contener lógica relacionada con el estado de la aplicación, manejar eventos y acciones de alto nivel, y también puede ser el lugar donde definas las rutas de tu aplicación si estás utilizando enrutamiento.
+
+## Archivo package-json.js
+
+La importancia del package.json en React radica en el hecho de que todos los componentes que instalemos o queremos instalar para usar en nuestro proyecto se guardan en el package.json y, al mismo tiempo, se instalan en la carpeta node_modules.
+De modo que la carpeta node_modules sabe todo lo que debe instalar, debido a que esa información se encuentra almacenada en el package.json en React Native.
+El package.json en React le indica a npm cuál es el script que debe usar para lanzar el servidor de node.
 
 ## Instalación
 
@@ -40,11 +48,13 @@ desarrollo web, en la facultad nacional del comahue (UNCO).
 5. Para cerrar la app.
     - Toca la tecla ctrl + c.
     - Y luego la tecla "s".
-    
+
+## Miembros del Grupo
+
+- Fausto Ignacio Biló - FAI 3616.
+- Diego Benjamin - FAI 3002.
 
 ## Contacto
 
 faustobilo47@gmail.com
 diego.benjamin@est.fi.uncoma.edu.ar
-
-

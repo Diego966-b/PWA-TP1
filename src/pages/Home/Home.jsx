@@ -1,13 +1,15 @@
 // React
-import TextField from '@mui/material/TextField';
-import { Empty } from 'antd';
 import { useState } from 'react';
-// Componentes y css
+// Antd
+import { Empty, message  } from 'antd';
+// Css Home
 import style from './Home.module.css';
+// Componentes
 import Titulo from '../../components/Titulo/Titulo.jsx';
 import Input from '../../components/Input/Input.jsx';
 import Button from '../../components/Button/Button.jsx';
 import Listar from '../../components/Listar/Listar.jsx';
+import Busqueda from '../../components/Busqueda/Busqueda.jsx';
 
 const tarea = {
     key: Date.now(),
@@ -58,13 +60,21 @@ const Home = () => {
     // Funciones
 
     const crearNuevaTarea = () => {
-        const newTarea = {
-            key: Date.now(), // Puede haber otra solucion, esta funcionando ahora
-            nombre: valueNombre,
-            descripcion: valueDescrip,
-            estado: "No completada",
-        };
-        setListaTareas([...listaTareas, newTarea]);
+        if (valueNombre.trim() === '' || valueDescrip.trim() === '') {
+            message.error('Por favor completa todos los campos.');
+        }
+        else
+        {
+            const newTarea = {
+                key: Date.now(),
+                nombre: valueNombre,
+                descripcion: valueDescrip,
+                estado: "No completada",
+            };
+            setListaTareas([...listaTareas, newTarea]);
+            setValueNombre("");
+            setValueDescrip("");
+        }
     };
 
     const completarTarea = (keyBuscada) => {
@@ -82,39 +92,39 @@ const Home = () => {
         const nuevasTareas = listaTareas.filter((tarea) => tarea.key !== keyBuscada);
         setListaTareas(nuevasTareas);
     };
-    
+
     return (
         <div className={style.Home}>
             <div className={style.box}>
                 <Titulo texto="Lista de tareas"></Titulo>
-                <p>
-                    Bienvenido a tu lista de tareas! <br/>
-                    Aqui podras crear tareas y marcarlas como completadas o eliminarlas. <br/> <br/>
-                    Este es tu progreso:
-                </p>
+                <p> Bienvenido a tu lista de tareas! </p> 
+                <p> Aqui podras crear tareas y marcarlas como completadas o eliminarlas. </p>
+                <p> Este es tu progreso: </p>
                 <p>{cantTareasCompletadas} tareas completadas</p>
                 <p>{listaTareas.length} tareas en total</p> 
             </div>
+            {/* Si esto es true renderizo lo que sigue de && */}
+            {listaTareas.length === 0 && 
+            <div className={style.box}>
+                <Empty description={<p></p>}/>
+                <p>"Ya completaste todas tus tareas, estas listo para descansar."</p>
+            </div>}
+            {/* 
+            ANTES:            
             {listaTareas.length === 0 ? (
                 <div className={style.box}>
                     <Empty description={<p></p>}/>
                     <p>Ya completaste todas tus tareas, estas listo para descansar.</p>
+                </div> 
+            */}
+            
+            <div className={style.box}>
+                <Titulo texto="Busqueda"></Titulo>
+                <div>
+                    <Busqueda onChangeHandler={onChangeHandlerBusqueda}></Busqueda>
+                    <Listar textoBusqueda={valueBusqueda} listaTareas={listaTareas} completarTarea={completarTarea} eliminarTarea={eliminarTarea}></Listar>
                 </div>
-            ) : (
-                <div className={style.box}>
-                    <Titulo texto="Busqueda"></Titulo>
-                    <div>
-                        <TextField className={style.busqueda}
-                            id="outlined-basic"
-                            variant="outlined"
-                            fullWidth
-                            label="Buscar"
-                            onChange={onChangeHandlerBusqueda}
-                        />
-                        <Listar input={valueBusqueda} data={listaTareas} completarTarea={completarTarea} eliminarTarea={eliminarTarea}></Listar>
-                    </div>
-                </div>
-            )}
+            </div>
             <div className={style.box}>
                 <Titulo texto="Crear nueva tarea"></Titulo>
                 <div className={style.crear}>
