@@ -1,7 +1,7 @@
 //Pagina de bienvenida.
 import Titulo from '../../components/Titulo/Titulo.jsx';
 import style from './Index.module.css';
-import logo from '../../head3.png';
+import logo from '../../assets/logo.png';
 import { Button } from 'antd';
 
 const Index = () => {
