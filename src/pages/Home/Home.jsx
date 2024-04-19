@@ -10,24 +10,25 @@ import Input from '../../components/Input/Input.jsx';
 import Button from '../../components/Button/Button.jsx';
 import Listar from '../../components/Listar/Listar.jsx';
 import Busqueda from '../../components/Busqueda/Busqueda.jsx';
+import Grafico from '../../components/Grafico/Grafico.jsx';
 
 const tarea = {
-    key: Date.now(),
+    id: Date.now(),
     nombre: "nombre1",
     descripcion: "descripcion1",
-    estado: "estado1",
+    completada: false,
 };
 const tarea2 = {
-    key: Date.now() + 1 ,
+    id: Date.now() + 1,
     nombre: "nombre2",
     descripcion: "descripcion2",
-    estado: "estado2",
+    completada: false,
 };
 const tarea3 = {
-    key: Date.now() + 2,
+    id: Date.now() + 2,
     nombre: "nombre3",
     descripcion: "descripcion3",
-    estado: "estado3",
+    completada: false,
 };
 
 const tareas = [tarea, tarea2, tarea3]; // Borrar despues tareas pre creadas!!!
@@ -37,8 +38,8 @@ const Home = () => {
     // UseStates
 
     const [cantTareasCompletadas, setCantTareasCompletadas] = useState(0);
-    const [valueBusqueda, setValueBusqueda] = useState("");
     const [listaTareas, setListaTareas] = useState(tareas);
+    const [valueBusqueda, setValueBusqueda] = useState("");
     const [valueNombre, setValueNombre] = useState("");
     const [valueDescrip, setValueDescrip] = useState("");
 
@@ -66,10 +67,10 @@ const Home = () => {
         else
         {
             const newTarea = {
-                key: Date.now(),
+                id: Date.now(),
                 nombre: valueNombre,
                 descripcion: valueDescrip,
-                estado: "No completada",
+                completada: false,
             };
             setListaTareas([...listaTareas, newTarea]);
             setValueNombre("");
@@ -77,19 +78,36 @@ const Home = () => {
         }
     };
 
-    const completarTarea = (keyBuscada) => {
+    const completarTarea = (idBuscado) => {
         const nuevasTareas = listaTareas.map((tarea) => {
-            if ((tarea.key === keyBuscada) && (tarea.estado !== "Completada")) {
-                tarea.estado = "Completada";
-                setCantTareasCompletadas(prev=>prev+1);
+            if (tarea.id === idBuscado)
+            {
+                if (!tarea.completada)
+                {
+                    tarea.completada = true;
+                    setCantTareasCompletadas(prev=>prev+1);
+                }
+                else
+                {
+                    tarea.completada = false;
+                    setCantTareasCompletadas(prev=>prev-1);
+                }
             }
             return tarea;
         });
         setListaTareas(nuevasTareas);
     };
     
-    const eliminarTarea = (keyBuscada) => {
-        const nuevasTareas = listaTareas.filter((tarea) => tarea.key !== keyBuscada);
+    const eliminarTarea = (idBuscado) => {
+        const nuevasTareas = listaTareas.filter((tarea) => {
+            if (tarea.id !== idBuscado) {
+                return tarea;
+            }
+            if (tarea.completada)
+            {
+                setCantTareasCompletadas(prev=>prev-1);
+            }
+        })
         setListaTareas(nuevasTareas);
     };
 
@@ -100,30 +118,23 @@ const Home = () => {
                 <p> Bienvenido a tu lista de tareas! </p> 
                 <p> Aqui podras crear tareas y marcarlas como completadas o eliminarlas. </p>
                 <p> Este es tu progreso: </p>
-                <p>{cantTareasCompletadas} tareas completadas</p>
-                <p>{listaTareas.length} tareas en total</p> 
+                <Grafico cantTareasCompletadas={cantTareasCompletadas} totalTareas={listaTareas.length}/>
+                 
+                <p>Cantidad de tareas completadas: {cantTareasCompletadas}</p>
+                <p>Total de tareas: {listaTareas.length}</p>
+                
             </div>
             {/* Si esto es true renderizo lo que sigue de && */}
             {listaTareas.length === 0 && 
-            <div className={style.box}>
-                <Empty description={<p></p>}/>
-                <p>"Ya completaste todas tus tareas, estas listo para descansar."</p>
-            </div>}
-            {/* 
-            ANTES:            
-            {listaTareas.length === 0 ? (
                 <div className={style.box}>
                     <Empty description={<p></p>}/>
-                    <p>Ya completaste todas tus tareas, estas listo para descansar.</p>
-                </div> 
-            */}
-            
+                    <p>"Ya completaste todas tus tareas, estas listo para descansar."</p>
+                </div>
+            }
             <div className={style.box}>
                 <Titulo texto="Busqueda"></Titulo>
-                <div>
-                    <Busqueda onChangeHandler={onChangeHandlerBusqueda}></Busqueda>
-                    <Listar textoBusqueda={valueBusqueda} listaTareas={listaTareas} completarTarea={completarTarea} eliminarTarea={eliminarTarea}></Listar>
-                </div>
+                <Busqueda onChangeHandler={onChangeHandlerBusqueda}></Busqueda>
+                <Listar textoBusqueda={valueBusqueda} listaTareas={listaTareas} completarTarea={completarTarea} eliminarTarea={eliminarTarea}></Listar>
             </div>
             <div className={style.box}>
                 <Titulo texto="Crear nueva tarea"></Titulo>

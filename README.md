@@ -21,7 +21,7 @@ Este será el fichero JS de entrada a nuestra aplicación React. Será el único
 
 ## Archivo app.js
 
-Este es el componente principal de tu aplicación React. Aquí es donde definirás la estructura principal de tu interfaz de usuario. Puedes organizar tu aplicación en otros componentes de React y colocarlos dentro de App.js. Este archivo puede contener lógica relacionada con el estado de la aplicación, manejar eventos y acciones de alto nivel, y también puede ser el lugar donde definas las rutas de tu aplicación si estás utilizando enrutamiento.
+Este es el componente principal de tu aplicación React. Aquí se define la estructura principal de la interfaz de usuario. Puedes organizar tu aplicación en otros componentes de React y colocarlos dentro de App.js. Este archivo puede contener lógica relacionada con el estado de la aplicación, manejar eventos y acciones de alto nivel.
 
 ## Archivo package-json.js
 
@@ -35,6 +35,8 @@ El package.json en React le indica a npm cuál es el script que debe usar para l
    - Copia la direccion del codigo de github.
    - Luego usa este comando en la terminal de tu IDE: git clone "link".
 
+(./src/assets/captura1.png)
+
 2. Entrar a la direccion desde la terminal.
     - Utiliza el comando "cd" hasta entrar a la app.
     - cd pwatp1.
@@ -45,9 +47,13 @@ El package.json en React le indica a npm cuál es el script que debe usar para l
 4. Para iniciar la aplicacion.
     - El comando: npm start.
 
+(./src/assets/captura2.png)
+
 5. Para cerrar la app.
     - Toca la tecla ctrl + c.
     - Y luego la tecla "s".
+
+(./src/assets/captura3.png)
 
 ## Miembros del Grupo
 
