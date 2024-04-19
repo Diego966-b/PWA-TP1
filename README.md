@@ -35,7 +35,7 @@ El package.json en React le indica a npm cuál es el script que debe usar para l
    - Copia la direccion del codigo de github.
    - Luego usa este comando en la terminal de tu IDE: git clone "link".
 
-!(./src/assets/captura1.png)
+![Captura de git clone](./src/assets/captura1.png)
 
 2. Entrar a la direccion desde la terminal.
     - Utiliza el comando "cd" hasta entrar a la app.
@@ -47,13 +47,13 @@ El package.json en React le indica a npm cuál es el script que debe usar para l
 4. Para iniciar la aplicacion.
     - El comando: npm start.
 
-(./src/assets/captura2.png)
+![Captura de npm start](./src/assets/captura2.png)
 
 5. Para cerrar la app.
     - Toca la tecla ctrl + c.
     - Y luego la tecla "s".
 
-(./src/assets/captura3.png)
+![Captura de cerrar app](./src/assets/captura3.png)
 
 ## Miembros del Grupo
 
