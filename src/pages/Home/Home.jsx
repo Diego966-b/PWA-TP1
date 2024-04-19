@@ -120,10 +120,10 @@ const Home = () => {
                 <p> Aqui podras crear tareas y marcarlas como completadas o eliminarlas. </p>
                 <p> Este es tu progreso: </p>
                 <Grafico cantTareasCompletadas={cantTareasCompletadas} totalTareas={listaTareas.length}/>
-                 
+                {/* 
                 <p>Cantidad de tareas completadas: {cantTareasCompletadas}</p>
                 <p>Total de tareas: {listaTareas.length}</p>
-                
+                */} 
             </div>
             {/* Si esto es true renderizo lo que sigue de && */}
             {listaTareas.length === 0 && 
