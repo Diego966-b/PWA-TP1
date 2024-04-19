@@ -11,10 +11,10 @@ import Button from '../../components/Button/Button.jsx';
 import Listar from '../../components/Listar/Listar.jsx';
 import Busqueda from '../../components/Busqueda/Busqueda.jsx';
 import Grafico from '../../components/Grafico/Grafico.jsx';
-
+/*
 const tarea = {
     id: Date.now(),
-    nombre: "nombre1",
+    nombre: "Lavar los",
     descripcion: "descripcion1",
     completada: false,
 };
@@ -31,14 +31,15 @@ const tarea3 = {
     completada: false,
 };
 
-const tareas = [tarea, tarea2, tarea3]; // Borrar despues tareas pre creadas!!!
-      
+const tareas = [tarea, tarea2, tarea3];
+*/
+
 const Home = () => {
   
     // UseStates
 
     const [cantTareasCompletadas, setCantTareasCompletadas] = useState(0);
-    const [listaTareas, setListaTareas] = useState(tareas);
+    const [listaTareas, setListaTareas] = useState([]);
     const [valueBusqueda, setValueBusqueda] = useState("");
     const [valueNombre, setValueNombre] = useState("");
     const [valueDescrip, setValueDescrip] = useState("");

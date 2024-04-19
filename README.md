@@ -35,7 +35,7 @@ El package.json en React le indica a npm cuál es el script que debe usar para l
    - Copia la direccion del codigo de github.
    - Luego usa este comando en la terminal de tu IDE: git clone "link".
 
-(./src/assets/captura1.png)
+!(./src/assets/captura1.png)
 
 2. Entrar a la direccion desde la terminal.
     - Utiliza el comando "cd" hasta entrar a la app.
