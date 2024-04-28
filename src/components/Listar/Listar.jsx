@@ -1,30 +1,36 @@
-import Tarea from '../Tarea/Tarea.jsx';
+import Tarea from "../Tarea/Tarea.jsx";
 // import style from './Listar.module.css';
 
+//Lo mejor es romper el props aca y utilizar las partes donde sea necesario
+// Listar = ({eliminarTarea, completarTarea})
 const Listar = (props) => {
-    const resultado = filtrar(props);
-    return (
-        <div>
-            {resultado.map((tareaFiltrada) => (
-                <Tarea eliminarTarea={props.eliminarTarea} completarTarea={props.completarTarea} tarea={tareaFiltrada} key={tareaFiltrada.id}></Tarea>
-            ))}
-        </div>
-    );
-}
+  const resultado = filtrar(props);
+  return (
+    <div>
+      {resultado.map((tareaFiltrada) => (
+        <Tarea
+          eliminarTarea={props.eliminarTarea}
+          completarTarea={props.completarTarea}
+          tarea={tareaFiltrada}
+          key={tareaFiltrada.id}
+        ></Tarea>
+      ))}
+    </div>
+  );
+};
 
 /**
  * Esta funcion filtra las tareas segun el input de la busqueda.
  */
-function filtrar (props) {
-    const listaTareasFiltrada = props.listaTareas.filter((el) => {
-        if (props.textoBusqueda === '') {
-            return el;
-        }
-        else {
-            return el.nombre.toLowerCase().includes(props.textoBusqueda)
-        }
-    })
-    return listaTareasFiltrada;
+function filtrar(props) {
+  const listaTareasFiltrada = props.listaTareas.filter((el) => {
+    if (props.textoBusqueda === "") {
+      return el;
+    } else {
+      return el.nombre.toLowerCase().includes(props.textoBusqueda);
+    }
+  });
+  return listaTareasFiltrada;
 }
 
 export default Listar;
