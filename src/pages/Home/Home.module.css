@@ -13,8 +13,8 @@
 }
 
 .box {
-    flex: 1; /* Hace que las columnas ocupen un tercio del espacio disponible */
-    padding: 20px; /* Agrega espacio alrededor de cada columna */
+    flex: 1; 
+    padding: 20px; 
 }
 
 .itemLista{

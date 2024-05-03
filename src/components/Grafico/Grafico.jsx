@@ -2,11 +2,10 @@ import * as React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
 // import style from './Grafico.module.css';
 
-export default function PieActiveArc(props) {
-    let tareasCompleatadas = props.cantTareasCompletadas;
-    let tareasNoCompletadas = props.totalTareas - tareasCompleatadas;
+export default function PieActiveArc({cantTareasCompletadas, totalTareas}) {
+    let tareasNoCompletadas = totalTareas - cantTareasCompletadas;
     let data = [
-        { id: 0, value: tareasCompleatadas, label: "Tareas completadas", color: "#4caf50"},
+        { id: 0, value: cantTareasCompletadas, label: "Tareas completadas", color: "#4caf50"},
         { id: 1, value: tareasNoCompletadas, label: "Tareas no completadas"},
     ];
 

@@ -5,34 +5,21 @@ import { Empty, message  } from 'antd';
 // Css Home
 import style from './Home.module.css';
 // Componentes
-import Titulo from '../../components/Titulo/Titulo.jsx';
-import Input from '../../components/Input/Input.jsx';
-import Button from '../../components/Button/Button.jsx';
-import Listar from '../../components/Listar/Listar.jsx';
-import Busqueda from '../../components/Busqueda/Busqueda.jsx';
-import Grafico from '../../components/Grafico/Grafico.jsx';
-/*
-const tarea = {
-    id: Date.now(),
-    nombre: "Lavar los",
-    descripcion: "descripcion1",
-    completada: false,
-};
-const tarea2 = {
-    id: Date.now() + 1,
-    nombre: "nombre2",
-    descripcion: "descripcion2",
-    completada: false,
-};
-const tarea3 = {
-    id: Date.now() + 2,
-    nombre: "nombre3",
-    descripcion: "descripcion3",
-    completada: false,
-};
+import Titulo from "../../components/Titulo/Titulo.jsx";
+import Input from "../../components/Input/Input.jsx";
+import Button from "../../components/Button/Button.jsx";
+import Listar from "../../components/Listar/Listar.jsx";
+import Busqueda from "../../components/Busqueda/Busqueda.jsx";
+import Grafico from "../../components/Grafico/Grafico.jsx";
 
-const tareas = [tarea, tarea2, tarea3];
-*/
+//Muy buen trabajo. Me encanto el grafico de torta
+
+//Observaciones:
+
+//Usen destructuring para las props de los componentes.
+//Borren el codigo que esta comentado, si no se usa no deberia estar.
+//Podrian agregar algunas imagenes de como se ve la aplicacion corriendo al readme?
+//Intenten instalar prettier o algun identador automatico para que el codigo quede mas ordenado y facil de leer.
 
 const Home = () => {
   
@@ -112,42 +99,53 @@ const Home = () => {
         setListaTareas(nuevasTareas);
     };
 
-    return (
-        <div className={style.Home}>
-            <div className={style.box}>
-                <Titulo texto="Lista de tareas"></Titulo>
-                <p> Bienvenido a tu lista de tareas! </p> 
-                <p> Aqui podras crear tareas y marcarlas como completadas o eliminarlas. </p>
-                <p> Este es tu progreso: </p>
-                <Grafico cantTareasCompletadas={cantTareasCompletadas} totalTareas={listaTareas.length}/>
-                {/* 
-                <p>Cantidad de tareas completadas: {cantTareasCompletadas}</p>
-                <p>Total de tareas: {listaTareas.length}</p>
-                */} 
-            </div>
-            {/* Si esto es true renderizo lo que sigue de && */}
-            {listaTareas.length === 0 && 
-                <div className={style.box}>
-                    <Empty description={<p></p>}/>
-                    <p>"Ya completaste todas tus tareas, estas listo para descansar."</p>
-                </div>
-            }
-            <div className={style.box}>
-                <Titulo texto="Busqueda"></Titulo>
-                <Busqueda onChangeHandler={onChangeHandlerBusqueda}></Busqueda>
-                <Listar textoBusqueda={valueBusqueda} listaTareas={listaTareas} completarTarea={completarTarea} eliminarTarea={eliminarTarea}></Listar>
-            </div>
-            <div className={style.box}>
-                <Titulo texto="Crear nueva tarea"></Titulo>
-                <div className={style.crear}>
-                    <p>Nombre:</p>
-                    <Input value={valueNombre} onChangeHandler={onChangeHandlerNombre}/>
-                    <p>Descripcion:</p>
-                    <Input value={valueDescrip} onChangeHandler={onChangeHandlerDescripcion}/>
-                    <Button text="Enviar" onClick={crearNuevaTarea}></Button>
-                </div>
-            </div>
+  return (
+    <div className={style.Home}>
+      <div className={style.box}>
+        <Titulo texto="Lista de tareas"></Titulo>
+        <p> Bienvenido a tu lista de tareas! </p>
+        <p>
+          {" "}
+          Aqui podras crear tareas y marcarlas como completadas o eliminarlas.{" "}
+        </p>
+        <p> Este es tu progreso: </p>
+        <Grafico
+          cantTareasCompletadas={cantTareasCompletadas}
+          totalTareas={listaTareas.length}
+        />
+      </div>
+      {/* Si esto es true renderizo lo que sigue de && */}
+      {listaTareas.length === 0 && (
+        <div className={style.box}>
+          <Empty description={<p></p>} />
+          <p>"Ya completaste todas tus tareas, estas listo para descansar."</p>
         </div>
-    );
-}
+      )}
+      <div className={style.box}>
+        <Titulo texto="Busqueda"/>
+        {/* Hagan self-close siempre que se pueda: /> */}
+        <Busqueda onChangeHandler={onChangeHandlerBusqueda}></Busqueda>
+        <Listar
+          textoBusqueda={valueBusqueda}
+          listaTareas={listaTareas}
+          completarTarea={completarTarea}
+          eliminarTarea={eliminarTarea}
+        ></Listar>
+      </div>
+      <div className={style.box}>
+        <Titulo texto="Crear nueva tarea"/>
+        <div className={style.crear}>
+          <p>Nombre:</p>
+          <Input value={valueNombre} onChangeHandler={onChangeHandlerNombre} />
+          <p>Descripcion:</p>
+          <Input
+            value={valueDescrip}
+            onChangeHandler={onChangeHandlerDescripcion}
+          />
+          <Button text="Enviar" onClick={crearNuevaTarea}/>
+        </div>
+      </div>
+    </div>
+  );
+};
 export default Home;

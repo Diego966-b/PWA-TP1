@@ -7,6 +7,6 @@
 }
 
 .busqueda:focus {
-    border-color: black; /* Cambia el color del borde cuando el input está seleccionado */
-    outline: none; /* Quita el resplandor alrededor del input cuando está seleccionado (si lo deseas) */
+    border-color: black; 
+    outline: none; 
 }

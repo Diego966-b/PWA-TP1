@@ -15,6 +15,8 @@ Fue diseñado como Trabajo practico numero 1 de la materia
 "Programacion Web Avanzada" de la carrera universitaria en 
 desarrollo web, en la facultad nacional del comahue (UNCO).
 
+![Captura de pantalla](./src/assets/capturaHome.png)
+
 ## Archivo index.js
 
 Este será el fichero JS de entrada a nuestra aplicación React. Será el único en el que carguemos ReactDOM y se encarga de acceder a un nodo del DOM (el div que antes identificamos como root) e importar y pintar el componente principal de la aplicación, en este caso, llamado App.

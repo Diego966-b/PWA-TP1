@@ -1,4 +1,4 @@
-import { Input as AntInput } from 'antd'; // Renombra 'Input' a 'AntInput' para evitar conflictos de nombres
+import { Input as AntInput } from 'antd'; 
 import style from './Input.module.css';
 
 const Input = ({ value, onChangeHandler }) => {
